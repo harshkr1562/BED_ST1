@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #Outer-Container {
+            /* border: 2px solid green; */
+            /* background-color: red; */
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-image: linear-gradient(70deg , rgb(110, 110, 255) , rgb(188, 65, 188)); */
+
+            background: linear-gradient(90deg, hsla(22, 100%, 78%, 1) 0%, hsla(2, 78%, 62%, 1) 100%);
+        }
+
+        #innerContainer {
+            /* border: 2px solid black; */
+            height: 80%;
+            border-radius: 10px;
+            background-color: white;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .headding {
+            background-color: #ea5753;
+            border: 2px solid grey;
+            width: 500px;
+            border-radius: 13px;
+            text-align: center;
+            color: white;
+        }
+
+        /* #listSec {
+            /* border: 2px solid black;
+        } */
+
+        #listSec ul li{
+            list-style: none;
+            padding: 5px 15px;
+        }
+
+        #listSec ul li span{
+            margin-left: 5px;
+        }
+
+        #input-options{
+            margin: 5px 16px;
+        }
+
+        #input-options input{
+            border: none;
+            border-bottom: 2px solid black;
+            outline: none;
+            text-decoration: none;
+        }
+
+        #input-options button{
+            padding: 3px 8px;
+            margin-left: 20px;
+            background-color: #ea5753;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="Outer-Container">
+        <div id="innerContainer">
+            <div class="headding">
+                <h1>
+                    <%= KindOfDay %>
+                </h1>
+            </div>
+            <div id="listSec">
+                <ul>
+                    <% for(i=0; i<newListItems.length; i++) { %>
+                        <li>
+                            <a href="/delete/<%= newListItems[i].id%>"><span><%= newListItems[i].newItem %></span></a>
+                        </li>
+                        <% } %>
+
+                            <form action="/" method="post" id="input-options">
+                                <input type="text" name="newItem" autocomplete="off">
+                                <button type="submit">Add</button>
+                            </form>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let a = document.getElementsByClassName("st");
+
+        Array.from(a).forEach(function(e){
+            e.addEventListener("click" , function(el){
+                if(e.style.textDecoration === "none"){
+                    e.style.textDecoration === "underline"
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
